@@ -1,4 +1,4 @@
-package de.adorsys.mobile.core
+package de.handler.mobile.core
 
 data class PokemonCard(
         val id: String?,

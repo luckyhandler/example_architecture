@@ -1,3 +1,3 @@
-package de.adorsys.mobile.core
+package de.handler.mobile.core
 
 data class PokemonCardWrapper(val cards: List<PokemonCard>)

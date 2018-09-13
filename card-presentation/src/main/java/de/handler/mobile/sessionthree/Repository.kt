@@ -1,9 +1,9 @@
-package de.adorsys.mobile.sessionthree
+package de.handler.mobile.sessionthree
 
 import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
-import de.adorsys.mobile.core.CardProvider
-import de.adorsys.mobile.core.PokemonCard
+import de.handler.mobile.core.CardProvider
+import de.handler.mobile.core.PokemonCard
 import kotlinx.coroutines.experimental.*
 
 object Repository {

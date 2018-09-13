@@ -1,4 +1,4 @@
-package de.adorsys.mobile.core
+package de.handler.mobile.core
 
 import android.util.Log
 import kotlinx.coroutines.experimental.Deferred

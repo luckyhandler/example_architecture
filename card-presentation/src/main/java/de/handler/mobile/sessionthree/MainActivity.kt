@@ -1,4 +1,4 @@
-package de.adorsys.mobile.sessionthree
+package de.handler.mobile.sessionthree
 
 
 import android.os.Bundle
@@ -17,7 +17,7 @@ class MainActivity : AppCompatActivity() {
         Repository.getAllPokemonCards().observe(this, Observer { pokemonCards ->
             var resultString = ""
             pokemonCards.forEach {
-                resultString = resultString + " " + it?.name + "\n"
+                resultString = "$resultString  ${it?.name} \n"
             }
             resultTextView.text = resultString
         })

@@ -5,7 +5,7 @@ apply plugin: 'kotlin-android-extensions'
 android {
     compileSdkVersion 28
     defaultConfig {
-        applicationId "de.adorsys.mobile.adorsys_academy_session_three"
+        applicationId "de.handler.mobile.example_architecture"
         minSdkVersion 21
         targetSdkVersion 28
         versionCode 1
