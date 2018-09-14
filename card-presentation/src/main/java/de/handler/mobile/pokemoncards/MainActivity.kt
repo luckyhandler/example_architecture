@@ -1,4 +1,4 @@
-package de.handler.mobile.sessionthree
+package de.handler.mobile.pokemoncards
 
 
 import android.os.Bundle
