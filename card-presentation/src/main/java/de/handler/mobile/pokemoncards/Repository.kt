@@ -4,9 +4,18 @@ import androidx.lifecycle.LiveData
 import androidx.lifecycle.MutableLiveData
 import de.handler.mobile.core.CardProvider
 import de.handler.mobile.core.PokemonCard
-import kotlinx.coroutines.experimental.*
+import kotlinx.coroutines.CoroutineScope
+import kotlinx.coroutines.Deferred
+import kotlinx.coroutines.Dispatchers
+import kotlinx.coroutines.Job
+import kotlinx.coroutines.async
+import kotlinx.coroutines.launch
+import kotlin.coroutines.CoroutineContext
 
-object Repository {
+object Repository : CoroutineScope {
+    override val coroutineContext: CoroutineContext
+        get() = Dispatchers.IO
+
     private val cardProvider = CardProvider()
     private val allCards = mutableMapOf<String, PokemonCard>()
     private val allCardsLiveData = MutableLiveData<List<PokemonCard?>>()
@@ -15,14 +24,14 @@ object Repository {
 
     fun getAllPokemonCards(forceReload: Boolean = false): LiveData<List<PokemonCard?>> {
         if (allCardsLiveData.value == null || forceReload) {
-            GlobalScope.launch {
+            launch {
                 if (allCardsJob.isActive) {
                     allCardsJob.join()
                     return@launch
                 }
             }
 
-            allCardsJob = GlobalScope.launch {
+            allCardsJob = launch {
                 val pokemonCardWrapper = cardProvider.getPokemonCards().await()
 
                 pokemonCardWrapper?.cards?.forEach { card ->
@@ -36,7 +45,7 @@ object Repository {
     }
 
     fun getPokemonCard(id: String): Deferred<PokemonCard?> {
-        return GlobalScope.async {
+        return async {
             if (allCardsJob.isActive) {
                 allCardsJob.join()
             }
